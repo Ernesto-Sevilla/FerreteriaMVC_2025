@@ -96,5 +96,5 @@ public class Empleado {
         this.fechaContratacion = fechaContratacion;
     }
     
-    
+    //Hola mundo =)
 }
