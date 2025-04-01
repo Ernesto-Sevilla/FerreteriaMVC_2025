@@ -4,10 +4,38 @@
  */
 package DAO;
 
+import Modelo.Categoria;
+import Util.ConexionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 /**
  *
  * @author Estudiantes
  */
 public class DAOCategoria {
     
+    public void crearCategoria(Categoria categoria) throws SQLException{
+    String sql = "INSERT INTO Categorias (nombre_categoria, "
+            + "descripcion_categoria) VALUES (?, ?)";
+    try (Connection c = ConexionDB.getConnection();
+        PreparedStatement stmt = c.prepareStatement(sql)){
+        stmt.setString(1, categoria.getNombreCategoria());
+        stmt.setString(2, categoria.getDescripcionCategoria());
+        stmt.executeUpdate();
+    }
+}
+    
+    public static void main (String[] args){
+        try{
+            DAOCategoria dao = new DAOCategoria();
+            Categoria c1 = new Categoria ();
+            c1.setNombreCategoria("Herramientas");
+            c1.setDescripcionCategoria("Mano");
+            dao.crearCategoria(c1);
+            System.out.println("Categoría creada con éxito");
+        }catch (SQLException e){
+            System.out.println("Error al crear categoria: " + e.getMessage());
+        }
+    }
 }
