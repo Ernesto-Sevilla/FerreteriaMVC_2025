@@ -10,7 +10,7 @@ import Util.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Date;
+import java.util.Date;
 /**
  *
  * @author Estudiantes
