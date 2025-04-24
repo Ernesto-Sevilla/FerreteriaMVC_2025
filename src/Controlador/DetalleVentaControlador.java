@@ -4,15 +4,72 @@
  */
 package Controlador;
 
-import DAO.CategoriaDAO;
-import Modelo.Categoria;
+import DAO.DetalleVentaDAO;
+import Modelo.DetalleVenta;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Estudiantes
  */
 public class DetalleVentaControlador {
-    
+
+    private final DetalleVentaDAO detalleVentaDAO;
+
+    public DetalleVentaControlador() {
+        this.detalleVentaDAO = new DetalleVentaDAO();
+    }
+
+    // Método para crear un nuevo detalle de venta
+    public void crearDetalleVenta(int idVenta, int idProducto, int cantidad, float precioUnitario) {
+        try {
+            DetalleVenta detalle = new DetalleVenta();
+            detalle.setIdVenta(idVenta);
+            detalle.setIdProducto(idProducto);
+            detalle.setCantidad(cantidad);
+            detalle.setPrecioUnitario(precioUnitario);
+            detalleVentaDAO.crearDetalleVenta(detalle);
+            JOptionPane.showMessageDialog(null, "Detalle de venta creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al crear el detalle de venta: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Método para obtener todos los detalles de venta
+    public List<DetalleVenta> obtenerTodosDetallesVenta() {
+        try {
+            return detalleVentaDAO.leerTodosDetallesVenta();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer los detalles de venta: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+
+    // Método para actualizar un detalle de venta existente
+    public void actualizarDetalleVenta(int idDetalleVenta, int idVenta, int idProducto, int cantidad, float precioUnitario) {
+        try {
+            DetalleVenta detalle = new DetalleVenta();
+            detalle.setIdDetalleVenta(idDetalleVenta);
+            detalle.setIdVenta(idVenta);
+            detalle.setIdProducto(idProducto);
+            detalle.setCantidad(cantidad);
+            detalle.setPrecioUnitario(precioUnitario);
+            detalleVentaDAO.actualizarDetalleVenta(detalle);
+            JOptionPane.showMessageDialog(null, "Detalle de venta actualizado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar el detalle de venta: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Método para eliminar un detalle de venta
+    public void eliminarDetalleVenta(int idDetalleVenta) {
+        try {
+            detalleVentaDAO.eliminarDetalleVenta(idDetalleVenta);
+            JOptionPane.showMessageDialog(null, "Detalle de venta eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar el detalle de venta: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

@@ -3,29 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/EmpleadoDAO.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/CompraDAO.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Modelo/Cliente.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/ProductoDAO.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Modelo/Usuario.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/ProductoControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Modelo/Producto.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/DetalleCompraDAO.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Modelo/Empleado.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/DetalleCompraControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/CategoriaControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/CategoriaDAO.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/ClienteControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/CompraControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/EmpleadoControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/DetalleVentaDAO.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/UsuarioControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Modelo/Compra.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/DetalleVentaControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Controlador/VentaControlador.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/Modelo/Venta.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/VentaDAO.java</file>
-            <file>file:/C:/Users/Estudiantes/Music/FerreteriaMVC_2025/src/DAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/Estudiantes/Music/Proyectos/FerreteriaMVC_2025/src/Controlador/ProductoControlador.java</file>
+            <file>file:/C:/Users/Estudiantes/Music/Proyectos/FerreteriaMVC_2025/src/Controlador/EmpleadoControlador.java</file>
         </group>
     </open-files>
 </project-private>

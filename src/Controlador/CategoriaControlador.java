@@ -60,7 +60,8 @@ public class CategoriaControlador {
             JOptionPane.showMessageDialog(null, "Error al actualizar la categoría: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-   
+
+    // Método para eliminar una categoría
     public void eliminarCategoria(int id) {
         try {
             categoriaDAO.eliminarCategoria(id);
@@ -69,5 +70,6 @@ public class CategoriaControlador {
             JOptionPane.showMessageDialog(null, "Error al eliminar la categoría: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+   
 }
 
