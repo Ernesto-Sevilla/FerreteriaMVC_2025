@@ -6,7 +6,7 @@ package Vista;
 
 /**
  *
- * @author Estudiantes
+ * @author Estudiante
  */
 public class VistaPrincipal extends javax.swing.JFrame {
 
@@ -28,22 +28,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         Opciones = new javax.swing.JTabbedPane();
-        Categorias = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout CategoriasLayout = new javax.swing.GroupLayout(Categorias);
-        Categorias.setLayout(CategoriasLayout);
-        CategoriasLayout.setHorizontalGroup(
-            CategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
-        );
-        CategoriasLayout.setVerticalGroup(
-            CategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
-        );
-
-        Opciones.addTab("tab1", Categorias);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +87,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Categorias;
     private javax.swing.JTabbedPane Opciones;
     // End of variables declaration//GEN-END:variables
 }

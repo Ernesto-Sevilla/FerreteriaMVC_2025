@@ -88,6 +88,7 @@ public class ProductoDAO {
     }
 
 // Método Main
+    /*
     public static void main(String[] args) {
         try {
             ProductoDAO dao = new ProductoDAO();
@@ -124,4 +125,5 @@ public class ProductoDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
+*/
 }

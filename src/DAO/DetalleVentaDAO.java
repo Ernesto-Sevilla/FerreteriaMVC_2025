@@ -78,7 +78,7 @@ public class DetalleVentaDAO {
             stmt.executeUpdate();
         }
     }
-
+/*
 // Método Main
     public static void main(String[] args) {
         try {
@@ -112,4 +112,5 @@ public class DetalleVentaDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
+*/
 }

@@ -71,7 +71,7 @@ public class UsuarioDAO {
             stmt.executeUpdate();
         }
     }
-
+/*
 // Método Main
     public static void main(String[] args) {
         try {
@@ -101,5 +101,5 @@ public class UsuarioDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
-
+*/
 }

@@ -94,6 +94,7 @@ public class ClienteDAO {
         }
     }
 
+    /*
     public static void main(String[] args) {
         try {
             ClienteDAO dao = new ClienteDAO();
@@ -130,5 +131,6 @@ public class ClienteDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
+*/
 
 }

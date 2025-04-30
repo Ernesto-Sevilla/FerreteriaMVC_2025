@@ -89,7 +89,7 @@ public class VentaControlador {
             JOptionPane.showMessageDialog(null, "Error al eliminar la venta: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+/*
     // Método main para pruebas
     public static void main(String[] args) {
         VentaControlador controlador = new VentaControlador();
@@ -123,4 +123,5 @@ public class VentaControlador {
         controlador.eliminarVenta(1);
 
     }
+*/
 }

@@ -84,7 +84,7 @@ public class CompraDAO {
             stmt.executeUpdate();
         }
     }
-
+/*
     public static void main(String[] args) {
         try {
             CompraDAO dao = new CompraDAO();
@@ -115,5 +115,6 @@ public class CompraDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
+*/
 
 }

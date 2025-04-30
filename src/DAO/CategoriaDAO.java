@@ -79,7 +79,7 @@ public class CategoriaDAO {
             stmt.executeUpdate();
         }
     }
-    
+/*
     public static void main(String[] args) {
     try {
             CategoriaDAO dao = new CategoriaDAO();
@@ -101,5 +101,6 @@ public class CategoriaDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
+*/
 
 }

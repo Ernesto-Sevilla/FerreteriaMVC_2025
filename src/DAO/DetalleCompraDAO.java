@@ -80,6 +80,7 @@ public class DetalleCompraDAO {
     }
 
 // Método Main
+    /*
     public static void main(String[] args) {
         try {
             DetalleCompraDAO dao = new DetalleCompraDAO();
@@ -112,4 +113,5 @@ public class DetalleCompraDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
+*/
 }

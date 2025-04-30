@@ -94,6 +94,7 @@ public class EmpleadoDAO {
     }
 
 // Método Main
+    /*
     public static void main(String[] args) {
         try {
             EmpleadoDAO dao = new EmpleadoDAO();
@@ -130,4 +131,5 @@ public class EmpleadoDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
+*/
 }
