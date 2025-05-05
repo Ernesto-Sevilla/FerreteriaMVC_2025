@@ -8,12 +8,12 @@ package Vista;
  *
  * @author Estudiantes
  */
-public class VistaCategorias extends javax.swing.JPanel {
+public class VistaUsuarios extends javax.swing.JPanel {
 
     /**
      * Creates new form VistaCategorias
      */
-    public VistaCategorias() {
+    public VistaUsuarios() {
         initComponents();
     }
 
@@ -40,9 +40,9 @@ public class VistaCategorias extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(788, 488));
 
-        jLabel1.setText("Nombre Categoria");
+        jLabel1.setText("Usuario");
 
-        jLabel2.setText("Descripción Categoria");
+        jLabel2.setText("Contraseña");
 
         jTextField1.setPreferredSize(new java.awt.Dimension(160, 22));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
