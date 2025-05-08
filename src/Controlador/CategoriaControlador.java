@@ -19,8 +19,8 @@ public class CategoriaControlador {
 
     private final CategoriaDAO categoriaDAO;
     
-    public CategoriaControlador(CategoriaDAO categoriaDAO) {
-        this.categoriaDAO = categoriaDAO;
+    public CategoriaControlador() {
+        this.categoriaDAO = new CategoriaDAO();
     }
     
     

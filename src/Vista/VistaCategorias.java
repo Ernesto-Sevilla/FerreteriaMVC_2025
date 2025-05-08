@@ -4,19 +4,44 @@
  */
 package Vista;
 
+import Controlador.CategoriaControlador;
+import Modelo.Categoria;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Estudiantes
  */
 public class VistaCategorias extends javax.swing.JPanel {
 
+    private final CategoriaControlador categoriaControlador;
+    private Integer idCategoriaSeleccionada = null;
     /**
      * Creates new form VistaCategorias
      */
     public VistaCategorias() {
         initComponents();
+        this.categoriaControlador = new CategoriaControlador();
+        cargarDatosTabla();
     }
 
+    private void cargarDatosTabla(){
+        List<Categoria> categorias = categoriaControlador.obtenerTodasCategorias();
+        
+        if (categorias != null){
+            DefaultTableModel model =  (DefaultTableModel) jTableCategorias.getModel();
+            model.setRowCount(0);
+            
+            for (Categoria cat : categorias){
+                Object[] row = {
+                    cat.getIdCategoria(),
+                    cat.getNombreCategoria(),
+                    cat.getDescripcionCategoria()
+                };
+                model.addRow(row);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,15 +53,15 @@ public class VistaCategorias extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldDescripcion = new javax.swing.JTextField();
+        jButtonEliminar = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jTableCategorias = new javax.swing.JTable();
+        jButtonGuardar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(788, 488));
 
@@ -44,21 +69,21 @@ public class VistaCategorias extends javax.swing.JPanel {
 
         jLabel2.setText("Descripción Categoria");
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(160, 22));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNombre.setPreferredSize(new java.awt.Dimension(160, 22));
+        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldNombreActionPerformed(evt);
             }
         });
 
-        jTextField2.setMinimumSize(new java.awt.Dimension(160, 22));
-        jTextField2.setPreferredSize(new java.awt.Dimension(160, 22));
+        jTextFieldDescripcion.setMinimumSize(new java.awt.Dimension(160, 22));
+        jTextFieldDescripcion.setPreferredSize(new java.awt.Dimension(160, 22));
 
-        jButton3.setText("Eliminar");
-        jButton3.setPreferredSize(new java.awt.Dimension(120, 20));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setPreferredSize(new java.awt.Dimension(120, 20));
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonEliminarActionPerformed(evt);
             }
         });
 
@@ -82,7 +107,7 @@ public class VistaCategorias extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(452, 230));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,10 +118,20 @@ public class VistaCategorias extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTableCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCategoriasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableCategorias);
 
-        jButton1.setText("Guardar");
-        jButton1.setPreferredSize(new java.awt.Dimension(120, 23));
+        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.setPreferredSize(new java.awt.Dimension(120, 23));
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,23 +143,23 @@ public class VistaCategorias extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(38, 38, 38)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
@@ -142,15 +177,15 @@ public class VistaCategorias extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
@@ -158,34 +193,91 @@ public class VistaCategorias extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        int filaSeleccionada = jTableCategorias.getSelectedRow();
+        if (filaSeleccionada != -1){
+            int idCategoria = (int) jTableCategorias.getValueAt(filaSeleccionada, 0);
+            categoriaControlador.eliminarCategoria(idCategoria);
+            cargarDatosTabla();
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar.", 
+                    "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        String nombre = jTextFieldNombre.getText();
+        String descripcion = jTextFieldDescripcion.getText();
+        
+        if(idCategoriaSeleccionada != null && !nombre.isEmpty() && !descripcion.isEmpty()){
+            categoriaControlador.actualizarCategoria(idCategoriaSeleccionada, nombre, descripcion);
+            cargarDatosTabla();
+            
+            jTextFieldNombre.setText("");
+            jTextFieldDescripcion.setText("");
+            idCategoriaSeleccionada = null;
+            
+            jButtonGuardar.setEnabled(false);
+            
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        // TODO add your handling code here:
+        String nombre = jTextFieldNombre.getText();
+        String descripcion = jTextFieldDescripcion.getText();
+        
+        if (!nombre.isEmpty() && descripcion.isEmpty()){
+            categoriaControlador.crearCategoria(nombre, descripcion);
+            cargarDatosTabla();
+            jTextFieldNombre.setText("");
+            jTextFieldDescripcion.setText("");
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos.",
+                    "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jTableCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCategoriasMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2){
+            int filaSeleccionada = jTableCategorias.getSelectedRow();
+            if (filaSeleccionada != -1){
+                idCategoriaSeleccionada = (int) jTableCategorias.getValueAt(filaSeleccionada, 0);
+                String nombre = (String) jTableCategorias.getValueAt(filaSeleccionada, 1);
+                String descripcion = (String) jTableCategorias.getValueAt(filaSeleccionada, 2);
+                
+                jTextFieldNombre.setText(nombre);
+                jTextFieldDescripcion.setText(descripcion);
+                
+                jButtonGuardar.setEnabled(false);
+                jButtonEliminar.setEnabled(false);
+            }   
+        }
+    }//GEN-LAST:event_jTableCategoriasMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTableCategorias;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextFieldDescripcion;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
