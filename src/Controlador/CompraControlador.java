@@ -1,21 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controlador;
 
 import DAO.CompraDAO;
-import Modelo.Compra;
 import DAO.DetalleCompraDAO;
+import Modelo.Compra;
 import Modelo.DetalleCompra;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
-import java.sql.Date;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class CompraControlador {
 
@@ -27,6 +25,7 @@ public class CompraControlador {
         this.detalleCompraDAO = new DetalleCompraDAO();
     }
 
+    // Método para crear una nueva compra con sus detalles
     public void crearCompra(int idEmpleado, Date fechaCompra, float totalCompra, List<DetalleCompra> detalles) {
         try {
             Compra compra = new Compra();
@@ -51,6 +50,7 @@ public class CompraControlador {
         }
     }
 
+    // Método para obtener todas las compras
     public List<Compra> obtenerTodasCompras() {
         try {
             return compraDAO.leerTodasCompras();
@@ -60,6 +60,7 @@ public class CompraControlador {
         }
     }
 
+    // Método para actualizar una compra existente
     public void actualizarCompra(int idCompra, int idEmpleado, Date fechaCompra, float totalCompra) {
         try {
             Compra compra = new Compra();
@@ -68,12 +69,13 @@ public class CompraControlador {
             compra.setFechaCompra(fechaCompra);
             compra.setTotalCompra(totalCompra);
             compraDAO.actualizarCompra(compra);
-            JOptionPane.showMessageDialog(null, "Compra actualizada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("Compra actualizada exitosamente.");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar la compra: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    // Método para eliminar una compra
     public void eliminarCompra(int idCompra) {
         try {
             compraDAO.eliminarCompra(idCompra);
@@ -81,5 +83,38 @@ public class CompraControlador {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar la compra: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    // Método main para pruebas
+    public static void main(String[] args) {
+        CompraControlador controlador = new CompraControlador();
+
+        // Crear una lista de detalles de compra
+        List<DetalleCompra> detalles = new ArrayList<>();
+        DetalleCompra detalle1 = new DetalleCompra();
+        detalle1.setIdProducto(4);
+        detalle1.setCantidad(11);
+        detalle1.setPrecioUnitario(51.51f);
+        detalles.add(detalle1);
+
+        // Crear una compra con detalles
+        controlador.crearCompra(1, new Date(), 150.50f, detalles);
+
+        // Leer todas las compras
+        List<Compra> compras = controlador.obtenerTodasCompras();
+        if (compras != null) {
+            System.out.println("Lista de compras:");
+            for (Compra c : compras) {
+                System.out.println("ID: " + c.getIdCompra()
+                        + ", Empleado: " + c.getIdEmpleado()
+                        + ", Total: " + c.getTotalCompra());
+            }
+        }
+
+        // Actualizar una compra (suponiendo que ID 1 existe)
+        controlador.actualizarCompra(1, 2, new Date(), 200.75f);
+
+        // Eliminar una compra
+        controlador.eliminarCompra(1);
     }
 }

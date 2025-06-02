@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import DAO.VentaDAO;
@@ -16,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Estudiantes
+ * @author Erneesto Sevilla
  */
 public class VentaControlador {
 
@@ -89,7 +85,7 @@ public class VentaControlador {
             JOptionPane.showMessageDialog(null, "Error al eliminar la venta: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-/*
+
     // Método main para pruebas
     public static void main(String[] args) {
         VentaControlador controlador = new VentaControlador();
@@ -123,5 +119,4 @@ public class VentaControlador {
         controlador.eliminarVenta(1);
 
     }
-*/
 }

@@ -1,25 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 import java.util.Date;
 import java.util.List;
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class Venta {
-    
     private int idVenta;
     private int idCliente; // Relación con Cliente
     private int idEmpleado; // Relación con Empleado
     private Date fechaVenta;
     private float totalVenta;
     private List<DetalleVenta> detalles; // Relación con DetalleVenta
-
-    public Venta() {
-    }
 
     public Venta(int idVenta, int idCliente, int idEmpleado, Date fechaVenta, float totalVenta, List<DetalleVenta> detalles) {
         this.idVenta = idVenta;
@@ -30,6 +23,9 @@ public class Venta {
         this.detalles = detalles;
     }
 
+    public Venta() {
+    }
+    
     public int getIdVenta() {
         return idVenta;
     }
@@ -78,6 +74,5 @@ public class Venta {
         this.detalles = detalles;
     }
     
-    
-    
+     
 }

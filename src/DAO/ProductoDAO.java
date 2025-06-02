@@ -1,21 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
 import Modelo.Producto;
 import Util.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class ProductoDAO {
 
@@ -41,6 +38,31 @@ public class ProductoDAO {
         }
     }
 
+    
+    public Producto obtenerProductoPorId(int idProducto) throws SQLException {
+    String sql = "SELECT * FROM Productos WHERE id_producto = ?";
+    Producto producto = null;
+
+    try (Connection c = ConexionDB.getConnection(); PreparedStatement stmt = c.prepareStatement(sql)) {
+        stmt.setInt(1, idProducto);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                producto = new Producto();
+                producto.setIdProducto(rs.getInt("id_producto"));
+                producto.setNombreProducto(rs.getString("nombre_producto"));
+                producto.setDescripcionProducto(rs.getString("descripcion_producto"));
+                producto.setIdCategoria(rs.getInt("id_categoria"));
+                producto.setPrecioUnitario(rs.getFloat("precio_unitario"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setImagen(rs.getString("imagen"));
+            }
+        }
+    }
+    return producto;
+}
+
+
+    
     public List<Producto> leerTodosProductos() throws SQLException {
         String sql = "SELECT * FROM Productos";
         List<Producto> productos = new ArrayList<>();
@@ -61,7 +83,6 @@ public class ProductoDAO {
         return productos;
     }
 
-    // Método para actualizar un producto
     public void actualizarProducto(Producto producto) throws SQLException {
         String sql = "UPDATE Productos SET nombre_producto = ?, descripcion_producto = ?, id_categoria = ?, precio_unitario = ?, stock = ?, imagen = ? WHERE id_producto = ?";
 
@@ -88,7 +109,6 @@ public class ProductoDAO {
     }
 
 // Método Main
-    /*
     public static void main(String[] args) {
         try {
             ProductoDAO dao = new ProductoDAO();
@@ -125,5 +145,4 @@ public class ProductoDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
-*/
 }

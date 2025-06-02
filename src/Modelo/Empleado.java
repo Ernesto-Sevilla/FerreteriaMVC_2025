@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 import java.util.Date;
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class Empleado {
     private int idEmpleado;
@@ -17,7 +14,7 @@ public class Empleado {
     private String celular;
     private String cargo;
     private Date fechaContratacion;
-
+    
     public Empleado(int idEmpleado, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String celular, String cargo, Date fechaContratacion) {
         this.idEmpleado = idEmpleado;
         this.primerNombre = primerNombre;
@@ -28,8 +25,8 @@ public class Empleado {
         this.cargo = cargo;
         this.fechaContratacion = fechaContratacion;
     }
-
-    public Empleado() {
+    
+     public Empleado() {
     }
 
     public int getIdEmpleado() {
@@ -95,6 +92,6 @@ public class Empleado {
     public void setFechaContratacion(Date fechaContratacion) {
         this.fechaContratacion = fechaContratacion;
     }
+
     
-    //Hola mundo =)
 }

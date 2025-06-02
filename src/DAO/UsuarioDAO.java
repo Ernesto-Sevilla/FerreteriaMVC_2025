@@ -1,22 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
 import Modelo.Usuario;
-
 import Util.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class UsuarioDAO {
 
@@ -50,7 +46,6 @@ public class UsuarioDAO {
         return usuarios;
     }
 
-    // Método para actualizar un usuario
     public void actualizarUsuario(Usuario usuario) throws SQLException {
         String sql = "UPDATE Usuarios SET usuario = ?, contraseña = ? WHERE id_usuario = ?";
 
@@ -71,7 +66,7 @@ public class UsuarioDAO {
             stmt.executeUpdate();
         }
     }
-/*
+
 // Método Main
     public static void main(String[] args) {
         try {
@@ -101,5 +96,5 @@ public class UsuarioDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
-*/
+
 }

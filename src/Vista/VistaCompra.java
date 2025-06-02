@@ -6,7 +6,7 @@ package Vista;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class VistaCompra extends javax.swing.JPanel {
 

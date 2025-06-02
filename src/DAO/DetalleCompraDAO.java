@@ -1,25 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
-import Modelo.*;
+import Modelo.DetalleCompra;
 import Util.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class DetalleCompraDAO {
 
-    public void crearDetalleCompra(DetalleCompra detalleCompra) throws SQLException {
+    public void crearDetalleCompra(DetalleCompra detalle) throws SQLException {
         String sql = """
         INSERT INTO Detalles_Compras (
             id_compra, 
@@ -29,10 +26,10 @@ public class DetalleCompraDAO {
         ) VALUES (?, ?, ?, ?)""";
 
         try (Connection c = ConexionDB.getConnection(); PreparedStatement stmt = c.prepareStatement(sql)) {
-            stmt.setInt(1, detalleCompra.getIdCompra());
-            stmt.setInt(2, detalleCompra.getIdProducto());
-            stmt.setInt(3, detalleCompra.getCantidad());
-            stmt.setFloat(4, detalleCompra.getPrecioUnitario());
+            stmt.setInt(1, detalle.getIdCompra());
+            stmt.setInt(2, detalle.getIdProducto());
+            stmt.setInt(3, detalle.getCantidad());
+            stmt.setFloat(4, detalle.getPrecioUnitario());
             stmt.executeUpdate();
         }
     }
@@ -55,7 +52,6 @@ public class DetalleCompraDAO {
         return detalles;
     }
 
-    // Método para actualizar un detalle de compra
     public void actualizarDetalleCompra(DetalleCompra detalle) throws SQLException {
         String sql = "UPDATE Detalles_Compras SET id_compra = ?, id_producto = ?, cantidad = ?, precio_unitario = ? WHERE id_detalle_compra = ?";
 
@@ -80,7 +76,6 @@ public class DetalleCompraDAO {
     }
 
 // Método Main
-    /*
     public static void main(String[] args) {
         try {
             DetalleCompraDAO dao = new DetalleCompraDAO();
@@ -113,5 +108,4 @@ public class DetalleCompraDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
-*/
 }

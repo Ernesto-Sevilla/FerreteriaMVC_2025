@@ -1,23 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
 import Modelo.Venta;
 import Util.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.sql.Statement;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class VentaDAO {
 
@@ -37,15 +34,15 @@ public class VentaDAO {
             stmt.setTimestamp(3, new java.sql.Timestamp(venta.getFechaVenta().getTime()));
             stmt.setFloat(4, venta.getTotalVenta());
             stmt.executeUpdate();
-
-            // Obtener el ID generado
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    generatedId = rs.getInt(1);
+            
+            try(ResultSet rs = stmt.getGeneratedKeys()){
+                if (rs.next()){
+                generatedId = rs.getInt(1);
+                
                 }
             }
         }
-        return generatedId;
+         return generatedId; 
     }
 
     public List<Venta> leerTodasVentas() throws SQLException {
@@ -65,7 +62,6 @@ public class VentaDAO {
         return ventas;
     }
 
-    // Método para actualizar una venta
     public void actualizarVenta(Venta venta) throws SQLException {
         String sql = "UPDATE Ventas SET id_cliente = ?, id_empleado = ?, fecha_venta = ?, total_venta = ? WHERE id_venta = ?";
 
@@ -88,7 +84,7 @@ public class VentaDAO {
             stmt.executeUpdate();
         }
     }
-/*
+
 // Método Main
     public static void main(String[] args) {
         try {
@@ -122,5 +118,4 @@ public class VentaDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
-*/
 }

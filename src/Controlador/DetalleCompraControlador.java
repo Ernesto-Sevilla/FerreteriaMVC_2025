@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import DAO.DetalleCompraDAO;
@@ -12,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class DetalleCompraControlador {
 
@@ -22,6 +18,7 @@ public class DetalleCompraControlador {
         this.detalleCompraDAO = new DetalleCompraDAO();
     }
 
+    // Método para crear un nuevo detalle de compra
     public void crearDetalleCompra(int idCompra, int idProducto, int cantidad, float precioUnitario) {
         try {
             DetalleCompra detalle = new DetalleCompra();
@@ -36,6 +33,7 @@ public class DetalleCompraControlador {
         }
     }
 
+    // Método para obtener todos los detalles de compra
     public List<DetalleCompra> obtenerTodosDetallesCompra() {
         try {
             return detalleCompraDAO.leerTodosDetallesCompra();
@@ -45,6 +43,7 @@ public class DetalleCompraControlador {
         }
     }
 
+    // Método para actualizar un detalle de compra existente
     public void actualizarDetalleCompra(int idDetalleCompra, int idCompra, int idProducto, int cantidad, float precioUnitario) {
         try {
             DetalleCompra detalle = new DetalleCompra();
@@ -54,12 +53,13 @@ public class DetalleCompraControlador {
             detalle.setCantidad(cantidad);
             detalle.setPrecioUnitario(precioUnitario);
             detalleCompraDAO.actualizarDetalleCompra(detalle);
-            JOptionPane.showMessageDialog(null, "Detalle de compra actualizado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("Detalle de compra actualizado exitosamente.");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar el detalle de compra: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    // Método para eliminar un detalle de compra
     public void eliminarDetalleCompra(int idDetalleCompra) {
         try {
             detalleCompraDAO.eliminarDetalleCompra(idDetalleCompra);
@@ -69,4 +69,29 @@ public class DetalleCompraControlador {
         }
     }
 
+    // Método main para pruebas
+    public static void main(String[] args) {
+        DetalleCompraControlador controlador = new DetalleCompraControlador();
+
+        // Crear un detalle de compra
+        controlador.crearDetalleCompra(1, 4, 11, 51.51f);
+
+        // Leer todos los detalles de compra
+        List<DetalleCompra> detalles = controlador.obtenerTodosDetallesCompra();
+        if (detalles != null) {
+            System.out.println("Lista de detalles de compra:");
+            for (DetalleCompra d : detalles) {
+                System.out.println("ID: " + d.getIdDetalleCompra()
+                        + ", Compra: " + d.getIdCompra()
+                        + ", Producto: " + d.getIdProducto()
+                        + ", Cantidad: " + d.getCantidad());
+            }
+        }
+
+        // Actualizar un detalle de compra (suponiendo que ID 1 existe)
+        controlador.actualizarDetalleCompra(1, 1, 4, 15, 55.75f);
+
+        // Eliminar un detalle de compra
+        controlador.eliminarDetalleCompra(1);
+    }
 }

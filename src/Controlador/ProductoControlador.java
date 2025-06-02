@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Controlador;
 
 import DAO.ProductoDAO;
@@ -12,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class ProductoControlador {
 
@@ -21,8 +18,8 @@ public class ProductoControlador {
     public ProductoControlador() {
         this.productoDAO = new ProductoDAO();
     }
-
     // Método para crear un nuevo producto
+
     public void crearProducto(String nombreProducto, String descripcionProducto, int idCategoria,
             float precioUnitario, int stock, String imagen) {
         try {
@@ -40,6 +37,17 @@ public class ProductoControlador {
         }
     }
 
+    
+     public Producto obtenerProductoPorId(int idProducto) {
+        try {
+            return productoDAO.obtenerProductoPorId(idProducto);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener el producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+
+    
     // Método para obtener todos los productos
     public List<Producto> obtenerTodosProductos() {
         try {
@@ -78,4 +86,30 @@ public class ProductoControlador {
             JOptionPane.showMessageDialog(null, "Error al eliminar el producto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    // Método main para pruebas
+    public static void main(String[] args) {
+        ProductoControlador controlador = new ProductoControlador();
+
+        // Crear un producto
+        controlador.crearProducto("Laptop", "Laptop de alta gama", 1, 1500.99f, 10, "ruta/laptop.jpg");
+
+        // Leer todos los productos
+        List<Producto> productos = controlador.obtenerTodosProductos();
+        if (productos != null) {
+            System.out.println("Lista de productos:");
+            for (Producto p : productos) {
+                System.out.println("ID: " + p.getIdProducto()
+                        + ", Nombre: " + p.getNombreProducto()
+                        + ", Precio: " + p.getPrecioUnitario());
+            }
+        }
+
+        // Actualizar un producto (suponiendo que ID 1 existe)
+        controlador.actualizarProducto(1, "Laptop Pro", "Laptop mejorada", 1, 1800.50f, 8, "ruta/laptop_pro.jpg");
+
+        // Eliminar un producto
+        controlador.eliminarProducto(1);
+    }
 }
+

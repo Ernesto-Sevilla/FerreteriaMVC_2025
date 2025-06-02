@@ -1,24 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package DAO;
 
 import Modelo.Compra;
 import Util.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.sql.Statement;
 
-/**
- *
- * @author Estudiantes
- */
 public class CompraDAO {
 
     public int crearCompra(Compra compra) throws SQLException {
@@ -35,15 +28,15 @@ public class CompraDAO {
             stmt.setDate(2, new java.sql.Date(compra.getFechaCompra().getTime()));
             stmt.setFloat(3, compra.getTotalCompra());
             stmt.executeUpdate();
-
-            // Obtener el ID generado
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
+            
+            try (ResultSet rs = stmt.getGeneratedKeys()){
+                if (rs.next()){
                     generatedId = rs.getInt(1);
                 }
             }
+            
         }
-        return generatedId;
+       return generatedId; 
     }
 
     public List<Compra> leerTodasCompras() throws SQLException {
@@ -58,6 +51,7 @@ public class CompraDAO {
                 compra.setFechaCompra(rs.getDate("fecha_compra"));
                 compra.setTotalCompra(rs.getFloat("total_compra"));
                 compras.add(compra);
+                
             }
         }
         return compras;
@@ -84,7 +78,8 @@ public class CompraDAO {
             stmt.executeUpdate();
         }
     }
-/*
+
+// Método Main
     public static void main(String[] args) {
         try {
             CompraDAO dao = new CompraDAO();
@@ -95,7 +90,7 @@ public class CompraDAO {
             compra.setIdEmpleado(2);
             compra.setFechaCompra(new java.util.Date());
             compra.setTotalCompra(1500.50f);
-            dao.actualizarCompra(compra);
+            dao.crearCompra(compra);
             System.out.println("Compra actualizada.");
 
             // Eliminar una compra
@@ -115,6 +110,4 @@ public class CompraDAO {
             System.err.println("Error: " + e.getMessage());
         }
     }
-*/
-
 }

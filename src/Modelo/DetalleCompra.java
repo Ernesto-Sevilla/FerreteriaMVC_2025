@@ -1,23 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
 /**
  *
- * @author Estudiantes
+ * @author Ernesto Sevilla
  */
 public class DetalleCompra {
-    
     private int idDetalleCompra;
     private int idCompra; // Relación con Compra
     private int idProducto; // Relación con Producto
     private int cantidad;
-    private float precioUnitario;
-
-    public DetalleCompra() {
-    }
+    private float precioUnitario; 
 
     public DetalleCompra(int idDetalleCompra, int idCompra, int idProducto, int cantidad, float precioUnitario) {
         this.idDetalleCompra = idDetalleCompra;
@@ -27,6 +20,9 @@ public class DetalleCompra {
         this.precioUnitario = precioUnitario;
     }
 
+    public DetalleCompra() {
+    }
+    
     public int getIdDetalleCompra() {
         return idDetalleCompra;
     }
@@ -69,4 +65,4 @@ public class DetalleCompra {
 
     
     
-}   
+}

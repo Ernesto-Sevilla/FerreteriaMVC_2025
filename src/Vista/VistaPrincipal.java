@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vista;
 
 /**
  *
- * @author Estudiante
+ * @author Ernesto Sevilla
  */
 public class VistaPrincipal extends javax.swing.JFrame {
 
@@ -16,12 +13,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public VistaPrincipal() {
         initComponents();
         Opciones.addTab("Categorias", new VistaCategorias());
-       /* Opciones.addTab("Clientes", new VistaClientes());
-        Opciones.addTab("Compra", new VistaCompra());
-        Opciones.addTab("Usuario", new VistaUsuarios());
-        Opciones.addTab("Ventas", new VistaVentas());
+        Opciones.addTab("Productos", new VistaProductos());
+        Opciones.addTab("Clientes", new VistaClientes());
+        Opciones.addTab("Compras", new VistaCompras());
+        Opciones.addTab("Usuarios", new VistaUsuarios());
         Opciones.addTab("Empleados", new VistaEmpleados());
-        Opciones.addTab("Productos", new VistaProductos());*/
+        Opciones.addTab("Ventas", new VistaVentas());
+        Opciones.addTab("Consultas con IA", new VistaConsultasDinamicas());
     }
 
     /**
@@ -36,23 +34,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Opciones = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ferreteria");
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Opciones, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(Opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Opciones, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(Opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
