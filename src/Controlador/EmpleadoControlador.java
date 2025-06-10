@@ -38,7 +38,7 @@ public class EmpleadoControlador {
         }
     }
 
-     // Obtener un empleado por su ID
+    // Obtener un empleado por su ID
     public Empleado obtenerEmpleadoPorId(int idEmpleado) {
         try {
             return empleadoDAO.obtenerEmpleadoPorId(idEmpleado);
@@ -47,7 +47,7 @@ public class EmpleadoControlador {
             return null;
         }
     }
-    
+
     // Método para obtener todos los empleados
     public List<Empleado> obtenerTodosEmpleados() {
         try {

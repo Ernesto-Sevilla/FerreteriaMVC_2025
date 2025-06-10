@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Ernesto Sevilla
+ * @author Estudiante
  */
 public class EmpleadoDAO {
 

@@ -1,23 +1,27 @@
 package Vista;
+
 import Controlador.ConsultaDinamicaControlador;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+
 /**
  *
  * @author Ernesto Sevilla
  */
 public class VistaConsultasDinamicas extends javax.swing.JPanel {
+
     private final ConsultaDinamicaControlador controlador;
+
     /**
      * Creates new form VistaConsultasDinamicas
      */
     public VistaConsultasDinamicas() {
         initComponents();
-         this.controlador = new ConsultaDinamicaControlador();
-        
+        this.controlador = new ConsultaDinamicaControlador();
+
         tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{},
-            new String[]{}
+                new Object[][]{},
+                new String[]{}
         ));
     }
 
@@ -103,12 +107,12 @@ public class VistaConsultasDinamicas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        
+
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void accionBotonConsultar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionBotonConsultar
-                                     
-       String consultaNatural = textConsulta.getText().trim();
+
+        String consultaNatural = textConsulta.getText().trim();
         if (!consultaNatural.isEmpty()) {
             List<Object[]> resultados = controlador.ejecutarConsultaNatural(consultaNatural);
             String[] columnNames = controlador.obtenerNombresColumnas(consultaNatural);
@@ -125,18 +129,18 @@ public class VistaConsultasDinamicas extends javax.swing.JPanel {
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, ingrese una consulta.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    
+
 
     }//GEN-LAST:event_accionBotonConsultar
 
     private void accionBotonLimpiar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionBotonLimpiar
-                                   
+
         textConsulta.setText("");
         tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{},
-            new String[]{}
+                new Object[][]{},
+                new String[]{}
         ));
-    
+
     }//GEN-LAST:event_accionBotonLimpiar
 
 

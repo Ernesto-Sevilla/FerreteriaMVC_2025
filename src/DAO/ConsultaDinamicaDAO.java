@@ -1,5 +1,5 @@
-
 package DAO;
+
 import Util.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,16 +7,16 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author Ernesto Sevilla
  */
 public class ConsultaDinamicaDAO {
- public List<Object[]> ejecutarConsulta(String sql) throws Exception {
+
+    public List<Object[]> ejecutarConsulta(String sql) throws Exception {
         List<Object[]> resultados = new ArrayList<>();
-        try (Connection c = ConexionDB.getConnection();
-             PreparedStatement stmt = c.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (Connection c = ConexionDB.getConnection(); PreparedStatement stmt = c.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
@@ -33,9 +33,7 @@ public class ConsultaDinamicaDAO {
     }
 
     public String[] obtenerNombresColumnas(String sql) throws Exception {
-        try (Connection c = ConexionDB.getConnection();
-             PreparedStatement stmt = c.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (Connection c = ConexionDB.getConnection(); PreparedStatement stmt = c.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             ResultSetMetaData metaData = rs.getMetaData();
             int columnas = metaData.getColumnCount();
@@ -45,5 +43,5 @@ public class ConsultaDinamicaDAO {
             }
             return nombreColumnas;
         }
-    }   
+    }
 }

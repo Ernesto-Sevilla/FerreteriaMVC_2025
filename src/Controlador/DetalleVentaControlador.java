@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import DAO.DetalleVentaDAO;
@@ -96,5 +95,3 @@ public class DetalleVentaControlador {
         controlador.eliminarDetalleVenta(1);
     }
 }
-
-

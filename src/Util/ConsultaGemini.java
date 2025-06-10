@@ -2,11 +2,13 @@ package Util;
 
 import okhttp3.*;
 import org.json.JSONObject;
+
 /**
  *
  * @author Ernesto Sevilla
  */
 public class ConsultaGemini {
+
     private static final String API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
     private static final String API_KEY = "AIzaSyAJFo6cYXkr63uHVWpSttKsvSEDgtnfy_A"; // Reemplaza con tu clave de API de Gemini
 
@@ -133,9 +135,9 @@ public class ConsultaGemini {
     // Validación de consultas SQL
     public boolean esConsultaSegura(String sql) {
         String consulta = sql.toLowerCase().trim();
-        return consulta.startsWith("select") &&
-               !consulta.contains("drop") &&
-               !consulta.contains("update") &&
-               !consulta.contains("insert");
+        return consulta.startsWith("select")
+                && !consulta.contains("drop")
+                && !consulta.contains("update")
+                && !consulta.contains("insert");
     }
 }

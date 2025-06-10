@@ -1,5 +1,5 @@
-
 package Controlador;
+
 import DAO.ConsultaDinamicaDAO;
 import Util.ConsultaGemini;
 import java.util.List;
@@ -7,19 +7,22 @@ import javax.swing.JOptionPane;
 import java.net.URL;
 import java.net.URLConnection;
 import java.io.IOException;
+
 /**
  *
  * @author Ernesto Sevilla
  */
 public class ConsultaDinamicaControlador {
+
     private final ConsultaDinamicaDAO consultaDAO;
     private final ConsultaGemini consultaGemini;
 
     public ConsultaDinamicaControlador() {
-    this.consultaDAO = new ConsultaDinamicaDAO();
-    this.consultaGemini = new ConsultaGemini();
-}
-public List<Object[]> ejecutarConsultaNatural(String consultaNatural) {
+        this.consultaDAO = new ConsultaDinamicaDAO();
+        this.consultaGemini = new ConsultaGemini();
+    }
+
+    public List<Object[]> ejecutarConsultaNatural(String consultaNatural) {
 
         try {
             // Validar conexión a Internet
@@ -46,7 +49,6 @@ public List<Object[]> ejecutarConsultaNatural(String consultaNatural) {
             return null;
         }
     }
-
 
     public String[] obtenerNombresColumnas(String consultaNatural) {
 

@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import DAO.ProductoDAO;
@@ -37,8 +36,7 @@ public class ProductoControlador {
         }
     }
 
-    
-     public Producto obtenerProductoPorId(int idProducto) {
+    public Producto obtenerProductoPorId(int idProducto) {
         try {
             return productoDAO.obtenerProductoPorId(idProducto);
         } catch (SQLException e) {
@@ -47,7 +45,6 @@ public class ProductoControlador {
         }
     }
 
-    
     // Método para obtener todos los productos
     public List<Producto> obtenerTodosProductos() {
         try {
@@ -112,4 +109,3 @@ public class ProductoControlador {
         controlador.eliminarProducto(1);
     }
 }
-

@@ -37,7 +37,6 @@ public class ClienteControlador {
         }
     }
 
-    
     public Cliente obtenerClientePorId(int idCliente) {
         try {
             return clienteDAO.obtenerClientePorId(idCliente);
@@ -46,7 +45,7 @@ public class ClienteControlador {
             return null;
         }
     }
-    
+
     // Método para obtener todos los clientes
     public List<Cliente> obtenerTodosClientes() {
         try {
@@ -112,5 +111,3 @@ public class ClienteControlador {
         controlador.eliminarCliente(1);
     }
 }
-
-

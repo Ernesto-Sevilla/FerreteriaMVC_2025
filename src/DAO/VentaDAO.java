@@ -14,7 +14,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author Ernesto Sevilla
+ * @author Estudiante
  */
 public class VentaDAO {
 
